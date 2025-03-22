@@ -3,6 +3,7 @@ import teamData from '../../server/team.json';
 import { useState, useEffect } from 'react';
 import { ProgressBar } from '../../components/progress-bar/progress-bar';
 import { teamImages } from '../../assets/images';
+import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 
 export const TeamMemberPage = () => {
 	const { id } = useParams();
@@ -61,7 +62,23 @@ export const TeamMemberPage = () => {
 
 	return (
 		<div className='max-w-2xl mx-auto p-6'>
-			<div className='bg-slate-50 shadow-sm rounded-lg overflow-hidden'>
+			<div className='bg-slate-50 shadow-sm rounded-lg overflow-hidden relative'>
+				<button
+					onClick={handleFavoriteClick}
+					className='group absolute top-4 right-4 z-10 p-2 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white transition-colors'
+					aria-label={
+						isFavorite ? 'Удалить из избранного' : 'Добавить в избранное'
+					}>
+					<span className='absolute hidden group-hover:block right-0 top-full mt-2 px-2 py-1 bg-slate-800 text-white text-sm rounded whitespace-nowrap'>
+						{isFavorite ? 'Убрать из избранного' : 'Добавить в избранное'}
+					</span>
+					{isFavorite ? (
+						<AiFillStar className='w-6 h-6 text-amber-400' />
+					) : (
+						<AiOutlineStar className='w-6 h-6 text-slate-600 hover:text-amber-400' />
+					)}
+				</button>
+
 				<img
 					src={teamImages[member.image]}
 					alt={`${member.name} ${member.surname}`}
@@ -88,7 +105,7 @@ export const TeamMemberPage = () => {
 
 					{member.contribution && (
 						<div className='mb-6'>
-							<h2 className='font-semibold mb-2 text-slate-800'>
+							<h2 className='text-xl font-semibold mb-2 text-slate-800'>
 								Вклад в проект
 							</h2>
 							<p className='text-slate-600'>
@@ -129,7 +146,7 @@ export const TeamMemberPage = () => {
 						</div>
 					</div>
 
-					<div className='flex justify-between'>
+					<div className='flex justify-center'>
 						<a
 							href={member['social-info']}
 							target='_blank'
@@ -137,17 +154,6 @@ export const TeamMemberPage = () => {
 							className='inline-block bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium py-2 px-4 rounded transition-colors'>
 							Связаться
 						</a>
-						<button
-							onClick={handleFavoriteClick}
-							className={`inline-block ${
-								isFavorite
-									? 'bg-rose-200 hover:bg-rose-300 text-rose-700'
-									: 'bg-emerald-200 hover:bg-emerald-300 text-emerald-700'
-							} font-medium py-2 px-4 rounded transition-colors`}>
-							{isFavorite
-								? 'Удалить из избранного'
-								: 'В избранное'}
-						</button>
 					</div>
 				</div>
 			</div>
