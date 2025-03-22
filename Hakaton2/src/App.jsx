@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router';
-import { NotFound, TeamMemberPage, MainPage } from './pages';
+import { NotFound, TeamMemberPage, MainPage, Favorites } from './pages';
 import './App.css';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
             </>
           }
         />
-        <Route path="/favorite" element={<h1>Избранное</h1>} />
+        <Route path="/favorite" element={<Favorites />} />
         <Route
           path="/*"
           element={

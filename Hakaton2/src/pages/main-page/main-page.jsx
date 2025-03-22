@@ -25,33 +25,31 @@ export const MainPage = () => {
       </div>
       <div>
         {/* TODO - заменить нижний код на компонент карточки */}
-        {team.map((member) => {
-          return (
-            <div key={member.id} className="bg-white p-2 rounded-lg shadow-md">
-              <img
-                src={member.image}
-                alt={`${member.name} ${member.surname}`}
-                className="w-full h-48 object-cover rounded-t-lg"
-              />
-              <div className="p-4">
-                <h2 className="text-xl font-bold">
-                  {member.name} {member.surname}
-                </h2>
-                <p className="text-gray-600">{member.position}</p>
-                <p className="text-gray-600">{member.age} лет</p>
-                <p className="mt-2">{member.info}</p>
-                <div className="mt-4">
-                  <button
-                    onClick={() => handleAddToFavorites(member)}
-                    className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-                  >
-                    Добавить в избранное
-                  </button>
-                </div>
+        {team.map((member) => (
+          <div key={member.id} className="bg-white p-2 rounded-lg shadow-md">
+            <img
+              src={member.image}
+              alt={`${member.name} ${member.surname}`}
+              className="w-full h-48 object-cover rounded-t-lg"
+            />
+            <div className="p-4">
+              <h2 className="text-xl font-bold">
+                {member.name} {member.surname}
+              </h2>
+              <p className="text-gray-600">{member.position}</p>
+              <p className="text-gray-600">{member.age} лет</p>
+              <p className="mt-2">{member.info}</p>
+              <div className="mt-4">
+                <button
+                  onClick={() => handleAddToFavorites(member)}
+                  className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+                >
+                  Добавить в избранное
+                </button>
               </div>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );
