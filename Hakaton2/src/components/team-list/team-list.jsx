@@ -3,6 +3,7 @@ import teamData from '../../server/team.json';
 import { teamImages } from '../../assets/images';
 import { useState } from 'react';
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
+import { FaCrown } from 'react-icons/fa';
 
 export const TeamList = () => {
 	const [favorites, setFavorites] = useState(
@@ -53,9 +54,19 @@ export const TeamList = () => {
 								className='w-full h-60 object-cover'
 							/>
 							<div className='p-4'>
-								<h3 className='text-xl font-semibold text-center text-slate-800 mb-2'>
-									{member.name} {member.surname}
-								</h3>
+								<div className='flex items-center justify-center gap-2 mb-2'>
+									<h3 className='text-xl font-semibold text-slate-800'>
+										{member.name} {member.surname}
+									</h3>
+									{member.position === 'Тим-лид' && (
+										<div className='group relative'>
+											<FaCrown className='w-5 h-5 text-amber-400' />
+											<span className='absolute hidden group-hover:block left-1/2 -translate-x-1/2 top-full mt-1 px-2 py-1 text-xs bg-slate-800 text-white rounded whitespace-nowrap'>
+												Тим-лид
+											</span>
+										</div>
+									)}
+								</div>
 								<p className='text-slate-600 text-center mb-2'>
 									{member.position}
 								</p>

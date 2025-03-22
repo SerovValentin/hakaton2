@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { ProgressBar } from '../../components/progress-bar/progress-bar';
 import { teamImages } from '../../assets/images';
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
+import { FaCrown } from 'react-icons/fa';
 
 export const TeamMemberPage = () => {
 	const { id } = useParams();
@@ -67,10 +68,10 @@ export const TeamMemberPage = () => {
 					onClick={handleFavoriteClick}
 					className='group absolute top-4 right-4 z-10 p-2 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white transition-colors'
 					aria-label={
-						isFavorite ? 'Удалить из избранного' : 'Добавить в избранное'
+						isFavorite ? 'Удалить из избранного' : 'В избранное'
 					}>
 					<span className='absolute hidden group-hover:block right-0 top-full mt-2 px-2 py-1 bg-slate-800 text-white text-sm rounded whitespace-nowrap'>
-						{isFavorite ? 'Убрать из избранного' : 'Добавить в избранное'}
+						{isFavorite ? 'Убрать из избранного' : 'В избранное'}
 					</span>
 					{isFavorite ? (
 						<AiFillStar className='w-6 h-6 text-amber-400' />
@@ -86,9 +87,19 @@ export const TeamMemberPage = () => {
 				/>
 
 				<div className='p-6'>
-					<h1 className='text-3xl font-bold mb-4 text-slate-800'>
-						{member.name} {member.surname}
-					</h1>
+					<div className='flex items-center justify-center gap-2 mb-4'>
+						<h1 className='text-3xl font-bold text-slate-800'>
+							{member.name} {member.surname}
+						</h1>
+						{member.position === 'Тим-лид' && (
+							<div className='group relative'>
+								<FaCrown className='w-7 h-7 text-amber-400' />
+								<span className='absolute hidden group-hover:block left-1/2 -translate-x-1/2 top-full mt-1 px-2 py-1 text-xs bg-slate-800 text-white rounded whitespace-nowrap'>
+									Тим-лид
+								</span>
+							</div>
+						)}
+					</div>
 
 					<div className='mb-4'>
 						<p className='text-slate-600'>
