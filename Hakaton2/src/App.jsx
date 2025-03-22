@@ -15,6 +15,8 @@ function App() {
             </>
           }
         />
+            
+			<Route path='/team-member/:id' element={<TeamMemberPage />} />
         <Route path="/favorite" element={<Favorites />} />
         <Route
           path="/*"
@@ -27,6 +29,7 @@ function App() {
       </Routes>
     </>
   );
-}
+
+
 
 export default App;
