@@ -1,6 +1,6 @@
-import { Route, Routes } from 'react-router';
-import { NotFound, TeamMemberPage, MainPage, Favorites } from './pages';
-import './App.css';
+import { Route, Routes } from "react-router";
+import { NotFound, TeamMemberPage, MainPage, Favorites } from "./pages";
+import "./App.css";
 
 function App() {
   return (
@@ -15,8 +15,8 @@ function App() {
             </>
           }
         />
-            
-			<Route path='/team-member/:id' element={<TeamMemberPage />} />
+
+        <Route path="/team-member/:id" element={<TeamMemberPage />} />
         <Route path="/favorite" element={<Favorites />} />
         <Route
           path="/*"
@@ -29,7 +29,6 @@ function App() {
       </Routes>
     </>
   );
-
-
+}
 
 export default App;
