@@ -1,12 +1,12 @@
-import { Route, Routes } from "react-router";
-import { NotFound, TeamMemberPage } from "./pages";
-import "./App.css";
+import { Route, Routes } from 'react-router';
+import { NotFound, TeamMemberPage, MainPage } from './pages';
+import './App.css';
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<h1>Home</h1>} />
+        <Route path="/" element={<MainPage />} />
         <Route
           path="/team-member"
           element={
