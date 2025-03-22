@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { MemberCard } from '../../components';
 
 export const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
@@ -9,13 +10,13 @@ export const Favorites = () => {
   }, []);
 
   const handleRemoveFromFavorites = (id) => {
-    const updatedFavorites = favorites.filter((member) => member.id !== id);
+    const updatedFavorites = favorites.filter((fav) => fav.id !== id);
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     setFavorites(updatedFavorites);
   };
 
   return (
-    <div className="p-4">
+    <div className="max-w-[1000px] w-full sm:px-6">
       <h1 className="text-4xl text-center font-bold mb-4">Избранное</h1>
       <div className="flex flex-wrap">
         {favorites.map((member) => (

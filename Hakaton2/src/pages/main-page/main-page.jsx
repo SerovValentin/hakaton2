@@ -1,54 +1,54 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import teamData from '../../server/team.json';
+import { MemberCard } from '../../components';
+import { useFetchTeamData } from '../../hooks';
 
 export const MainPage = () => {
-  const [team, setTeam] = useState([]);
+  const { team, isLoading, error } = useFetchTeamData(teamData);
+  const [favorites, setFavorites] = useState(
+    JSON.parse(localStorage.getItem('favorites') || '[]')
+  );
 
-  useEffect(() => {
-    setTeam(teamData.team);
-  }, []);
+  const handleToggleFavorite = (member, favorites) => {
+    const newFavorites = favorites.includes(member.id)
+      ? favorites.filter((favId) => favId !== member.id)
+      : [...favorites, member.id];
 
-  const handleAddToFavorites = (member) => {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    if (!favorites.some((fav) => fav.id === member.id)) {
-      favorites.push(member);
-      localStorage.setItem('favorites', JSON.stringify(favorites));
-    }
+    localStorage.setItem('favorites', JSON.stringify(newFavorites));
+    setFavorites(newFavorites);
   };
 
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-slate-400"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-10">
+        <h2 className="text-2xl text-slate-600">{error.message}</h2>
+      </div>
+    );
+  }
+
   return (
-    <div className="p-4">
+    <div className="max-w-[1000px] w-full m-auto p-4 sm:px-6">
       <h1 className="text-4xl text-center font-bold mb-4">О нашей команде</h1>
       <div className="text-2xl text-center italic text-gray-400">
         Мы — студенты Result University. <br /> Наша команда состоит из специалистов,
         которые постоянно развиваются и улучшают свои навыки.
       </div>
-      <div>
-        {/* TODO - заменить нижний код на компонент карточки */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-6">
         {team.map((member) => (
-          <div key={member.id} className="bg-white p-2 rounded-lg shadow-md">
-            <img
-              src={member.image}
-              alt={`${member.name} ${member.surname}`}
-              className="w-full h-48 object-cover rounded-t-lg"
-            />
-            <div className="p-4">
-              <h2 className="text-xl font-bold">
-                {member.name} {member.surname}
-              </h2>
-              <p className="text-gray-600">{member.position}</p>
-              <p className="text-gray-600">{member.age} лет</p>
-              <p className="mt-2">{member.info}</p>
-              <div className="mt-4">
-                <button
-                  onClick={() => handleAddToFavorites(member)}
-                  className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-                >
-                  Добавить в избранное
-                </button>
-              </div>
-            </div>
-          </div>
+          <MemberCard
+            key={member.id}
+            member={member}
+            toggleFavorite={handleToggleFavorite}
+            favorites={favorites}
+          />
         ))}
       </div>
     </div>
