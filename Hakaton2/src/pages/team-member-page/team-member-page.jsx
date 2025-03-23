@@ -21,7 +21,7 @@ export const TeamMemberPage = () => {
       setMember(foundMember);
 
       const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-      setIsFavorite(favorites.includes(foundMember?.id));
+      setIsFavorite(favorites.some((fav) => fav.id === foundMember?.id));
 
       setIsLoading(false);
     };
@@ -33,12 +33,12 @@ export const TeamMemberPage = () => {
     const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
 
     if (isFavorite) {
-      const newFavorites = favorites.filter((favId) => favId !== member.id);
+      const newFavorites = favorites.filter((fav) => fav.id !== member.id);
       localStorage.setItem('favorites', JSON.stringify(newFavorites));
       setIsFavorite(false);
     } else {
-      favorites.push(member.id);
-      localStorage.setItem('favorites', JSON.stringify(favorites));
+      const newFavorites = [...favorites, member];
+      localStorage.setItem('favorites', JSON.stringify(newFavorites));
       setIsFavorite(true);
     }
   };
@@ -60,7 +60,7 @@ export const TeamMemberPage = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
+    <div className="max-w-2xl mx-auto mt-25 p-6">
       <div className="bg-slate-50 shadow-sm rounded-lg overflow-hidden relative">
         <button
           onClick={handleFavoriteClick}
