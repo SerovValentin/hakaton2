@@ -16,13 +16,15 @@ export const Slider = () => {
   };
 
   return (
-    <div className="w-full md:w-[70%] m-auto pt-10 pb-20 px-4">
-      <h1 className="text-gray-400 text-center text-xl md:text-2xl">
-        Проекты, которые мы реализовали во время обучения
+
+    <div className="w-full md:w-[70%] m-auto pt-10 px-4">
+      <h1 className="text-gray-600 text-center text-xl md:text-2xl">
+        Технологии, которые мы освоили за время обучения
+
       </h1>
       <div className="overflow-hidden relative mt-4">
         <div
-          className={`flex transition ease-out duration-500`}
+          className="flex transition ease-out duration-500"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
         >
           {projectImages.map((img) => (
@@ -38,14 +40,14 @@ export const Slider = () => {
             </div>
           ))}
         </div>
-        <div className="absolute inset-0 flex items-center justify-between px-2">
+        <div className="absolute inset-0 flex items-center justify-between px-2 text-slate-400">
           <BsArrowLeftCircleFill
             onClick={previousSlide}
-            className="cursor-pointer  text-3xl md:text-4xl hover:text-slate-800 transition-colors mr-2 bg-white rounded-full"
+            className="cursor-pointer text-3xl md:text-4xl hover:text-slate-300 transition-colors mr-2 bg-white rounded-full"
           />
           <BsArrowRightCircleFill
             onClick={nextSlide}
-            className="cursor-pointer  text-3xl md:text-4xl hover:text-slate-800 transition-colors ml-2 bg-white rounded-full"
+            className="cursor-pointer text-3xl md:text-4xl hover:text-slate-300 transition-colors ml-2 bg-white rounded-full"
           />
         </div>
       </div>

@@ -88,6 +88,7 @@ export const MemberCard = ({
                   e.preventDefault();
                   window.location.href = `/team-member/${member.id}`;
                 }}
+                className="hover:bg-slate-700"
               />
             </div>
           )}
