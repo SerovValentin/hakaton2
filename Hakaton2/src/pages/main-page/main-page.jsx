@@ -5,14 +5,21 @@ import { useFetchTeamData } from '../../hooks';
 
 export const MainPage = () => {
   const { team, isLoading, error } = useFetchTeamData(teamData);
+  console.log(team);
   const [favorites, setFavorites] = useState(
     JSON.parse(localStorage.getItem('favorites') || '[]')
   );
+  console.log(favorites);
 
-  const handleToggleFavorite = (member, favorites) => {
-    const newFavorites = favorites.includes(member.id)
-      ? favorites.filter((favId) => favId !== member.id)
-      : [...favorites, member.id];
+  const handleToggleFavorite = (member) => {
+    const isFavorite = favorites.some((fav) => fav.id === member.id);
+
+    let newFavorites;
+    if (isFavorite) {
+      newFavorites = favorites.filter((fav) => fav.id !== member.id);
+    } else {
+      newFavorites = [...favorites, member];
+    }
 
     localStorage.setItem('favorites', JSON.stringify(newFavorites));
     setFavorites(newFavorites);
@@ -48,6 +55,7 @@ export const MainPage = () => {
             member={member}
             toggleFavorite={handleToggleFavorite}
             favorites={favorites}
+            isFavoritePage={false}
           />
         ))}
       </div>
