@@ -1,4 +1,5 @@
 import { teamImages } from '../../assets/images';
+import { Button } from '../button/button';
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 import { FaCrown } from 'react-icons/fa';
 
@@ -55,37 +56,37 @@ export const MemberCard = ({
           </div>
           <p className="text-slate-600 text-center mb-2">{member.position}</p>
           <p className="text-slate-600 text-sm mb-4 line-clamp-2">{member.info}</p>
-          <div className="flex justify-center">
-            {isFavoritePage ? (
-              <>
-                <button
-                  className="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium py-2 px-8 rounded transition-colors"
-                  onClick={() => onRemoveFromFavorites(member.id)}
-                >
-                  Убрать из избранного
-                </button>
-                <button
-                  className="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium py-2 px-8 rounded transition-colors"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = `/team-member/${member.id}`;
-                  }}
-                >
-                  Открыть
-                </button>
-              </>
-            ) : (
-              <button
-                className="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium py-2 px-8 rounded transition-colors"
+          {isFavoritePage ? (
+            <div className="flex justify-around">
+              <Button
+                color="#e2e8f0"
+                border={5}
+                label={'Убрать из избранного'}
+                onClick={() => onRemoveFromFavorites(member.id)}
+              />
+              <Button
+                color="#e2e8f0"
+                border={5}
+                label={'Открыть'}
                 onClick={(e) => {
                   e.preventDefault();
                   window.location.href = `/team-member/${member.id}`;
                 }}
-              >
-                Открыть
-              </button>
-            )}
-          </div>
+              />
+            </div>
+          ) : (
+            <div className="flex justify-center">
+              <Button
+                color="#e2e8f0"
+                border={5}
+                label={'Открыть'}
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = `/team-member/${member.id}`;
+                }}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>
