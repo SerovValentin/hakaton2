@@ -57,12 +57,23 @@ export const MemberCard = ({
           <p className="text-slate-600 text-sm mb-4 line-clamp-2">{member.info}</p>
           <div className="flex justify-center">
             {isFavoritePage ? (
-              <button
-                className="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium py-2 px-8 rounded transition-colors"
-                onClick={() => onRemoveFromFavorites(member.id)}
-              >
-                Убрать из избранного
-              </button>
+              <>
+                <button
+                  className="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium py-2 px-8 rounded transition-colors"
+                  onClick={() => onRemoveFromFavorites(member.id)}
+                >
+                  Убрать из избранного
+                </button>
+                <button
+                  className="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium py-2 px-8 rounded transition-colors"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = `/team-member/${member.id}`;
+                  }}
+                >
+                  Открыть
+                </button>
+              </>
             ) : (
               <button
                 className="bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium py-2 px-8 rounded transition-colors"
