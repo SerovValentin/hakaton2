@@ -40,7 +40,7 @@ export const MainPage = () => {
   }
 
   return (
-    <div className="max-w-[1000px] w-full m-auto p-4 sm:px-6">
+    <div className="max-w-[1000px] w-full m-auto mt-25 p-4 sm:px-6">
       <h1 className="text-4xl text-center font-bold mb-4">О нашей команде</h1>
       <div className="text-2xl text-center italic text-gray-400">
         Мы — студенты Result University. <br /> Наша команда состоит из специалистов,

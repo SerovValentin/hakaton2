@@ -13,7 +13,7 @@ export const Favorites = () => {
   };
 
   return (
-    <div className="max-w-[1000px] w-full m-auto p-4 sm:px-6">
+    <div className="max-w-[1000px] w-full m-auto mt-25 p-4 sm:px-6">
       <h1 className="text-4xl text-center font-bold mb-4">Избранное</h1>
       {favorites.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-6">
