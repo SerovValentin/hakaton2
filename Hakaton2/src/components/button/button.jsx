@@ -19,7 +19,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   padding: 5px 10px;
   height: 30px;
-  transition: background-color 0.5s easy
+  transition: background-color 0.5s ease;
 
   &:hover {
     background-color: ${({ color }) => (color ? hexToRgba(color, 0.7) : null)};
