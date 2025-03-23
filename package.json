@@ -1,7 +1,7 @@
 {
   "name": "hakaton2",
   "private": true,
-  "homepage": "https://github.com/SerovValentin/hakaton2/Hackaton2",
+  "homepage": "https://github.com/SerovValentin/hakaton2",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
