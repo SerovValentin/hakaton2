@@ -1,10 +1,10 @@
-import { useParams } from 'react-router';
-import teamData from '../../server/team.json';
-import { useState, useEffect } from 'react';
-import { ProgressBar } from '../../components/progress-bar/progress-bar';
-import { teamImages } from '../../assets/images';
-import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
-import { FaCrown } from 'react-icons/fa';
+import { useParams } from "react-router";
+import teamData from "../../server/team.json";
+import { useState, useEffect } from "react";
+import { ProgressBar } from "../../components/progress-bar/progress-bar";
+import { teamImages } from "../../assets/images";
+import { AiOutlineStar, AiFillStar } from "react-icons/ai";
+import { FaCrown } from "react-icons/fa";
 
 export const TeamMemberPage = () => {
   const { id } = useParams();
@@ -20,7 +20,7 @@ export const TeamMemberPage = () => {
       const foundMember = teamData.team.find((m) => m.id === Number(id));
       setMember(foundMember);
 
-      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+      const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
       setIsFavorite(favorites.includes(foundMember?.id));
 
       setIsLoading(false);
@@ -30,15 +30,15 @@ export const TeamMemberPage = () => {
   }, [id]);
 
   const handleFavoriteClick = () => {
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
 
     if (isFavorite) {
       const newFavorites = favorites.filter((favId) => favId !== member.id);
-      localStorage.setItem('favorites', JSON.stringify(newFavorites));
+      localStorage.setItem("favorites", JSON.stringify(newFavorites));
       setIsFavorite(false);
     } else {
       favorites.push(member.id);
-      localStorage.setItem('favorites', JSON.stringify(favorites));
+      localStorage.setItem("favorites", JSON.stringify(favorites));
       setIsFavorite(true);
     }
   };
@@ -65,10 +65,10 @@ export const TeamMemberPage = () => {
         <button
           onClick={handleFavoriteClick}
           className="group absolute top-4 right-4 z-10 p-2 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white transition-colors"
-          aria-label={isFavorite ? 'Удалить из избранного' : 'В избранное'}
+          aria-label={isFavorite ? "Удалить из избранного" : "В избранное"}
         >
           <span className="absolute hidden group-hover:block right-0 top-full mt-2 px-2 py-1 bg-slate-800 text-white text-sm rounded whitespace-nowrap">
-            {isFavorite ? 'Убрать из избранного' : 'В избранное'}
+            {isFavorite ? "Убрать из избранного" : "В избранное"}
           </span>
           {isFavorite ? (
             <AiFillStar className="w-6 h-6 text-amber-400" />
@@ -88,7 +88,7 @@ export const TeamMemberPage = () => {
             <h1 className="text-3xl font-bold text-slate-800">
               {member.name} {member.surname}
             </h1>
-            {member.position === 'Тим-лид' && (
+            {member.position === "Тим-лид" && (
               <div className="group relative">
                 <FaCrown className="w-7 h-7 text-amber-400" />
                 <span className="absolute hidden group-hover:block left-1/2 -translate-x-1/2 top-full mt-1 px-2 py-1 text-xs bg-slate-800 text-white rounded whitespace-nowrap">
@@ -117,7 +117,9 @@ export const TeamMemberPage = () => {
           )}
 
           <div className="mb-6">
-            <h2 className="text-xl font-semibold mb-3 text-slate-800">Навыки</h2>
+            <h2 className="text-xl font-semibold mb-3 text-slate-800">
+              Навыки
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <ProgressBar
                 label="HTML"
@@ -125,8 +127,18 @@ export const TeamMemberPage = () => {
                 color="bg-rose-200"
                 type="bar"
               />
-              <ProgressBar label="CSS" value={member.CSS} color="bg-sky-200" type="bar" />
-              <ProgressBar label="JS" value={member.JS} color="bg-amber-200" type="bar" />
+              <ProgressBar
+                label="CSS"
+                value={member.CSS}
+                color="bg-sky-200"
+                type="bar"
+              />
+              <ProgressBar
+                label="JS"
+                value={member.JS}
+                color="bg-amber-200"
+                type="bar"
+              />
               <ProgressBar
                 label="React"
                 value={member.React}
@@ -138,7 +150,7 @@ export const TeamMemberPage = () => {
 
           <div className="flex justify-center">
             <a
-              href={member['social-info']}
+              href={member["social-info"]}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium py-2 px-4 rounded transition-colors"
