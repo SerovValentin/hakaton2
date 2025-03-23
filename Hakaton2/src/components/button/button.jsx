@@ -30,10 +30,10 @@ const StyledButton = styled.button`
   }
 `;
 
-export const Button = ({ color, border, label, onClick }) => {
+export const Button = ({ color, border, children, onClick, props }) => {
   return (
-    <StyledButton color={color} $border={border} onClick={onClick}>
-      {label}
+    <StyledButton color={color} $border={border} onClick={onClick} {...props}>
+      {children}
     </StyledButton>
   );
 };
