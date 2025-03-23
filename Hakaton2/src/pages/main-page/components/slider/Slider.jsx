@@ -16,11 +16,9 @@ export const Slider = () => {
   };
 
   return (
-
-    <div className="w-full md:w-[70%] m-auto pt-10 px-4">
+    <div className="w-full md:w-[70%] m-auto pt-10 pb-15 px-4">
       <h1 className="text-gray-600 text-center text-xl md:text-2xl">
         Технологии, которые мы освоили за время обучения
-
       </h1>
       <div className="overflow-hidden relative mt-4">
         <div
