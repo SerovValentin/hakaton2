@@ -25,7 +25,6 @@ const StyledButton = styled.button`
     background-color: ${({ color }) => (color ? hexToRgba(color, 0.7) : null)};
 
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-
   }
 
   &:active {
