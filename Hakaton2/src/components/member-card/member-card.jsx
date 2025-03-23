@@ -61,13 +61,13 @@ export const MemberCard = ({
               <Button
                 color="#e2e8f0"
                 border={5}
-                label={'Убрать из избранного'}
+                children="Убрать из избранного"
                 onClick={() => onRemoveFromFavorites(member.id)}
               />
               <Button
                 color="#e2e8f0"
                 border={5}
-                label={'Открыть'}
+                children="Открыть"
                 onClick={(e) => {
                   e.preventDefault();
                   window.location.href = `/team-member/${member.id}`;
@@ -79,7 +79,7 @@ export const MemberCard = ({
               <Button
                 color="#e2e8f0"
                 border={5}
-                label={'Открыть'}
+                children="Открыть"
                 onClick={(e) => {
                   e.preventDefault();
                   window.location.href = `/team-member/${member.id}`;

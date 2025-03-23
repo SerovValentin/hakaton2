@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import teamData from '../../server/team.json';
 import { MemberCard } from '../../components';
+import { Slider } from './components';
 import { useFetchTeamData } from '../../hooks';
 
 export const MainPage = () => {
@@ -57,6 +58,7 @@ export const MainPage = () => {
           />
         ))}
       </div>
+      <Slider />
     </div>
   );
 };
