@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { projectImages } from '../../../../assets/for-slider/images';
-import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
+import { useState } from "react";
+import { projectImages } from "../../../../assets/for-slider/images";
+import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 
 export const Slider = () => {
   let [currentSlide, setCurrentSlide] = useState(0);
@@ -16,9 +16,11 @@ export const Slider = () => {
   };
 
   return (
+
     <div className="w-full md:w-[70%] m-auto pt-10 px-4">
       <h1 className="text-gray-600 text-center text-xl md:text-2xl">
         Технологии, которые мы освоили за время обучения
+
       </h1>
       <div className="overflow-hidden relative mt-4">
         <div

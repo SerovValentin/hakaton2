@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export const useFetchTeamData = (teamData) => {
   const [team, setTeam] = useState([]);
@@ -13,7 +13,7 @@ export const useFetchTeamData = (teamData) => {
             if (teamData.team) {
               resolve(teamData.team);
             } else {
-              reject('Данные не обнаружены');
+              reject("Данные не обнаружены");
             }
           }, 1000);
         });

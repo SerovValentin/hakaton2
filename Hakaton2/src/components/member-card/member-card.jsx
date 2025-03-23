@@ -1,7 +1,7 @@
-import { teamImages } from '../../assets/images';
-import { Button } from '../button/button';
-import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
-import { FaCrown } from 'react-icons/fa';
+import { teamImages } from "../../assets/images";
+import { Button } from "../button/button";
+import { AiOutlineStar, AiFillStar } from "react-icons/ai";
+import { FaCrown } from "react-icons/fa";
 
 export const MemberCard = ({
   member,
@@ -22,10 +22,12 @@ export const MemberCard = ({
         <button
           onClick={() => toggleFavorite(member)}
           className="group absolute top-4 right-4 z-10 p-2 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white transition-colors"
-          aria-label={isFavorite ? 'Удалить из избранного' : 'Добавить в избранное'}
+          aria-label={
+            isFavorite ? "Удалить из избранного" : "Добавить в избранное"
+          }
         >
           <span className="absolute hidden group-hover:block right-0 top-full mt-2 px-2 py-1 bg-slate-800 text-white text-sm rounded whitespace-nowrap">
-            {isFavorite ? 'Убрать из избранного' : 'В избранное'}
+            {isFavorite ? "Убрать из избранного" : "В избранное"}
           </span>
           {isFavorite ? (
             <AiFillStar className="w-6 h-6 text-amber-400" />
@@ -45,7 +47,7 @@ export const MemberCard = ({
             <h3 className="text-xl font-semibold text-slate-800">
               {member.name} {member.surname}
             </h3>
-            {member.position === 'Тим-лид' && (
+            {member.position === "Тим-лид" && (
               <div className="group relative">
                 <FaCrown className="w-5 h-5 text-amber-400" />
                 <span className="absolute hidden group-hover:block left-1/2 -translate-x-1/2 top-full mt-1 px-2 py-1 text-xs bg-slate-800 text-white rounded whitespace-nowrap">
@@ -55,7 +57,9 @@ export const MemberCard = ({
             )}
           </div>
           <p className="text-slate-600 text-center mb-2">{member.position}</p>
-          <p className="text-slate-600 text-sm mb-4 line-clamp-2">{member.info}</p>
+          <p className="text-slate-600 text-sm mb-4 line-clamp-2">
+            {member.info}
+          </p>
           {isFavoritePage ? (
             <div className="flex justify-around">
               <Button
