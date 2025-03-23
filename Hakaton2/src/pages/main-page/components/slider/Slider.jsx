@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { projectImages } from '../../../../assets/for-slider/images';
-import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
+import { useState } from "react";
+import { projectImages } from "../../../../assets/for-slider/images";
+import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 
 export const Slider = () => {
   let [currentSlide, setCurrentSlide] = useState(0);
@@ -16,7 +16,7 @@ export const Slider = () => {
   };
 
   return (
-    <div className="w-full md:w-[70%] m-auto pt-10 px-4">
+    <div className="w-full md:w-[70%] m-auto pt-10 pb-20 px-4">
       <h1 className="text-gray-400 text-center text-xl md:text-2xl">
         Проекты, которые мы реализовали во время обучения
       </h1>
@@ -41,11 +41,11 @@ export const Slider = () => {
         <div className="absolute inset-0 flex items-center justify-between px-2">
           <BsArrowLeftCircleFill
             onClick={previousSlide}
-            className="cursor-pointer text-3xl md:text-4xl hover:text-slate-800 transition-colors"
+            className="cursor-pointer  text-3xl md:text-4xl hover:text-slate-800 transition-colors mr-2 bg-white rounded-full"
           />
           <BsArrowRightCircleFill
             onClick={nextSlide}
-            className="cursor-pointer text-3xl md:text-4xl hover:text-slate-800 transition-colors"
+            className="cursor-pointer  text-3xl md:text-4xl hover:text-slate-800 transition-colors ml-2 bg-white rounded-full"
           />
         </div>
       </div>

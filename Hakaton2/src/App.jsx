@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router";
+import { Route, Routes, Navigate } from "react-router";
 import { NotFound, TeamMemberPage, MainPage, Favorites } from "./pages";
 import "./App.css";
 import { Header } from "./components/header/header";
@@ -14,11 +14,12 @@ function App() {
           path="/team-member"
           element={
             <>
-              <TeamMemberPage />
+              <Navigate to="/" replace />
             </>
           }
         />
         <Route path="/team-member/:id" element={<TeamMemberPage />} />
+
         <Route path="/favorite" element={<Favorites />} />
         <Route
           path="/*"
