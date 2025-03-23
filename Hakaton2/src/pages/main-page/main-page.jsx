@@ -5,11 +5,9 @@ import { useFetchTeamData } from '../../hooks';
 
 export const MainPage = () => {
   const { team, isLoading, error } = useFetchTeamData(teamData);
-  console.log(team);
   const [favorites, setFavorites] = useState(
     JSON.parse(localStorage.getItem('favorites') || '[]')
   );
-  console.log(favorites);
 
   const handleToggleFavorite = (member) => {
     const isFavorite = favorites.some((fav) => fav.id === member.id);
