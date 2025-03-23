@@ -23,6 +23,7 @@ const StyledButton = styled.button`
 
   &:hover {
     background-color: ${({ color }) => (color ? hexToRgba(color, 0.7) : null)};
+    text-shadow: 1px 1px 5px black;
   }
 
   &:active {
