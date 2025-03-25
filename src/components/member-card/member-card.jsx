@@ -2,6 +2,7 @@ import { teamImages } from "../../assets/images";
 import { Button } from "../button/button";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { FaCrown } from "react-icons/fa";
+import { Link } from "react-router";
 
 export const MemberCard = ({
   member,
@@ -68,28 +69,20 @@ export const MemberCard = ({
                 children="Убрать из избранного"
                 onClick={() => onRemoveFromFavorites(member.id)}
               />
-              <Button
-                color="#e2e8f0"
-                border={5}
-                children="Открыть"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.location.href = `/team-member/${member.id}`;
-                }}
-              />
+              <Link to={`/team-member/${member.id}`}>
+                <Button color="#e2e8f0" border={5} children="Открыть" />
+              </Link>
             </div>
           ) : (
             <div className="flex justify-center">
-              <Button
-                color="#e2e8f0"
-                border={5}
-                children="Открыть"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.location.href = `/team-member/${member.id}`;
-                }}
-                className="hover:bg-slate-700"
-              />
+              <Link to={`/team-member/${member.id}`}>
+                <Button
+                  color="#e2e8f0"
+                  border={5}
+                  children="Открыть"
+                  className="hover:bg-slate-700"
+                />
+              </Link>
             </div>
           )}
         </div>
